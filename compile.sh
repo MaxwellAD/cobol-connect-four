@@ -1,0 +1,1 @@
+cobc -x src/main/cobol/sorlib/connect-four/connect-four.cbl -o connect-four

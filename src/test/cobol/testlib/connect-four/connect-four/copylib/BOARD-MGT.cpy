@@ -1,0 +1,10 @@
+
+       RESET-BOARD SECTION.
+           PERFORM VARYING GRID-Y-COUNTER FROM 1 BY 1 UNTIL 
+           GRID-Y-COUNTER > 6
+               PERFORM VARYING GRID-X-COUNTER FROM 1 BY 1 UNTIL 
+               GRID-X-COUNTER > 7
+                   MOVE ' ' TO GRID-CELL(GRID-X-COUNTER GRID-Y-COUNTER)
+               END-PERFORM
+           END-PERFORM
+       .

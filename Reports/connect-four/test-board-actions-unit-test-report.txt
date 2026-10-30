@@ -1,0 +1,16 @@
+TEST CASE - TEST-TOKEN-DROPS-TO-BOTTOM
+[PASS]
+
+TEST CASE - TEST-TOKEN-IS-BLOCKED
+[PASS]
+
+TEST CASE - SKIP-TOKEN-IN-FULL-COLUMN
+[SKIP]
+
+
+TEST EXECUTION RESULTS
+===================================================
+PASS : 2
+FAIL : 0
+SKIP : 1
+===================================================

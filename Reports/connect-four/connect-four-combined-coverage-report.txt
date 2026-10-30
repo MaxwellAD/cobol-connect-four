@@ -1,0 +1,80 @@
+****************************************************************************************
+    COVERAGE REPORT - CONNECT-FOUR                                            
+****************************************************************************************
+           PROCEDURE DIVISION.
+           
+           MAIN-ENTRY.
+[-]            PERFORM DRAW-TABLE 
+[-]            PERFORM EXIT-PROGRAM 
+           .
+    
+           CHECK-FOR-WIN.
+               EXIT PARAGRAPH 
+           .
+          
+           DROP-TOKEN.
+[+]            PERFORM VARYING GRID-Y-COUNTER FROM 1 BY 1 UNTIL 
+               GRID-Y-COUNTER > 6
+                   *> IF A TOKEN IS IN THIS SPACE
+                   IF GRID-CELL(BOARD-COLUMN-SELECTED GRID-Y-COUNTER) 
+                       NOT = ' '
+[+]                    MOVE CURRENT-PLAYER TO GRID-CELL(
+                                 BOARD-COLUMN-SELECTED GRID-Y-COUNTER - 1) 
+                       EXIT PERFORM 
+                   END-IF
+                   IF GRID-Y-COUNTER = 6
+[+]                    MOVE CURRENT-PLAYER TO 
+                       GRID-CELL(BOARD-COLUMN-SELECTED GRID-Y-COUNTER )
+                   END-IF 
+               END-PERFORM
+               EXIT PARAGRAPH 
+           .
+    
+           DRAW-TABLE.
+[-]            PERFORM VARYING GRID-Y-COUNTER FROM 1 BY 1 UNTIL 
+               GRID-Y-COUNTER > 6
+[-]                MOVE 1 TO DISPLAY-OUTPUT-POINTER 
+[-]                PERFORM VARYING GRID-X-COUNTER FROM 1 BY 1 UNTIL 
+                   GRID-X-COUNTER > 7
+[-]                    STRING '|   ' DELIMITED BY SIZE INTO DISPLAY-BUFFER
+                       WITH POINTER DISPLAY-OUTPUT-POINTER 
+                   END-PERFORM
+[-]                STRING '|' DELIMITED BY SIZE INTO DISPLAY-BUFFER 
+                   WITH POINTER DISPLAY-OUTPUT-POINTER 
+[-]                DISPLAY DISPLAY-BUFFER 
+[-]                MOVE 1 TO DISPLAY-OUTPUT-POINTER 
+[-]                PERFORM VARYING GRID-X-COUNTER FROM 1 BY 1 UNTIL 
+                   GRID-X-COUNTER > 7
+[-]                    STRING '----' DELIMITED BY SIZE INTO DISPLAY-BUFFER 
+                       WITH POINTER DISPLAY-OUTPUT-POINTER 
+                   END-PERFORM
+[-]                STRING '-' DELIMITED BY SIZE INTO DISPLAY-BUFFER 
+                   WITH POINTER DISPLAY-OUTPUT-POINTER 
+[-]                DISPLAY DISPLAY-BUFFER 
+               END-PERFORM
+               EXIT PARAGRAPH 
+           .
+    
+           EXIT-PROGRAM.
+[-]            DISPLAY 'FELL THROUGH'
+[-]            STOP RUN
+           .
+     
+****************************************************************************************
+    SUMMARY STATISTICS                           
+****************************************************************************************
+    TOTAL STATEMENTS: 18
+    COVERED STATEMENTS: 03
+    STATEMENT COVERAGE: 016.66%
+*COV* 3690637131 01 001110000000000000
+****************************************************************************************
+    END OF REPORT - CONNECT-FOUR                                            
+****************************************************************************************
+ 
+ 
+ 
+ 
+RUNS MERGED: 000000002
+COVERAGE LINES MERGED: 000000002
+COVERAGE LINES SKIPPED (OTHER PROGRAM, STALE OR MALFORMED): 000000000
+INPUT LINES POSSIBLY TRUNCATED: 000000000
