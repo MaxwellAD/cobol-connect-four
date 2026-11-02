@@ -33,19 +33,25 @@
 
        TEST-TOKEN-IS-BLOCKED SECTION.
            *> TEST THAT A TOKEN IS BLOCKED ON ITS WAY TO THE BOTTOM
+           *> 1 # # # # # # #
+           *> 2 # # # # # # #
+           *> 3 # # # # # # #
+           *> 4 0 # # # # # #
+           *> 5 X # # # # # # <-- should stop here
+           *> 6 0 # # # # # #
        
            *> GIVEN
            MOVE 1 TO BOARD-COLUMN-SELECTED 
            MOVE 'X' TO CURRENT-PLAYER
-           *> PLAYER 0 TOKEN IN CELL 5, X SHOULD STOP AT ROW 4 
-           MOVE '0' TO GRID-CELL(1 5)
+           *> PLAYER 0 TOKEN IN ROW 6, X SHOULD STOP AT ROW 5
+           MOVE '0' TO GRID-CELL(1 6)
        
            *> WHEN
            PERFORM DROP-TOKEN 
            
            *> THEN
            MOVE 'X' TO CUT-ASSERT-TARGET 
-           MOVE GRID-CELL(1 4) TO CUT-ASSERT-ACTUAL
+           MOVE GRID-CELL(1 5) TO CUT-ASSERT-ACTUAL
            PERFORM CUT-ASSERT-EQUALS            
        
            PERFORM CUT-END-TEST 
@@ -53,6 +59,11 @@
 
        SKIP-REJECT-TKN-IN-FULL-COLUMN SECTION.
            *> WHEN A COLUMN IS FULL TO THE TOP A MOVE SHOULD BE REJECTED
+           *> 1 0 # # # # # # <-- 0 should block X from dropping and
+           *> 2 # # # # # # #       return an invalid move
+           *> 3 # # # # # # #
+           *> 4 # # # # # # # 
+           *> 5 # # # # # # #
        
            *> GIVEN
            MOVE 1 TO BOARD-COLUMN-SELECTED 
